@@ -12,7 +12,7 @@ stores = [
         "items":[
             {
                 "name":"item1",
-                'price':17.99
+                "price":17.99
             },
             {
                 "name":"item2",
@@ -64,7 +64,7 @@ def create_store_inStore(name):
                 "name": request_data["name"],
                 "price":request_data["price"]
             }
-            store["item"].append(new_Item)
+            store["items"].append(new_Item)
             return jsonify(new_Item)
 
     return jsonify({"message":"store not exist"})
