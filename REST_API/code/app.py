@@ -9,10 +9,12 @@ items = []  # item list
 
 class Item(Resource):
     def get(self,name):
-        for item in items:
-            if item["name"] == name:
-                return item
-        return {"item":None},404
+        # for item in items:
+        #     if item["name"] == name:
+        #         return item
+        item = next(filter(lambda x: x["name"] == name, items),None) # next will give us the first --> but we only have one
+
+        return {"item":item},404
 
 
     def post(self,name):
