@@ -14,10 +14,13 @@ class Item(Resource):
         #         return item
         item = next(filter(lambda x: x["name"] == name, items),None) # next will give us the first --> but we only have one
 
-        return {"item":item},404
+        return {"item":item},200 if item  else 404
 
 
     def post(self,name):
+        if  next(filter(lambda x: x["name"] == name, items),None) is not None:
+            return {"message":"An item with name  '{}' already exist.".format(name)},400 # bad request 
+
 
         data = request.get_json(silent = True)
         price = data["price"]
