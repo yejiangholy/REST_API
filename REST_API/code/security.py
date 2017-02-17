@@ -1,5 +1,5 @@
 from werkzeug.security import safe_str_cmp
-from user import User
+from REST_API.code.user import User
 
 users = [
    User(1,"bob" , "asdf")
@@ -17,7 +17,6 @@ def authenticate(username, password):
     else: return None
 
 
-
-def indentify(payload):
+def identify(payload):
     user_id = payload["identity"]
     return userid_mapping.get(user_id,None)

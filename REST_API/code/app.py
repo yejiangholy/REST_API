@@ -1,10 +1,14 @@
 from flask import Flask, request
 from flask_restful import Resource,Api
+from flask_jwt import  JWT
+from REST_API.code.security import authenticate, identify
 
 app = Flask(__name__)
 
 app.secret_key = "Secret"
 api = Api(app)
+
+jwt = JWT(app, authenticate, identify)  # /auth
 
 items = []  # item list
 
