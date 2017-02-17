@@ -35,6 +35,10 @@ class Item(Resource):
         items.append(item)
         return item, 201 # creating success # 201 ||  # 202 --> accepted but not excuted
 
+    def delete(self,name):
+        global items
+        items = list(filter(lambda x: x["name"] != name, items))
+        return {"message": "item deleted"}
 
 
 class ItemList(Resource):
