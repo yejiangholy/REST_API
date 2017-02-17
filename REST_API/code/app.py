@@ -23,7 +23,7 @@ class Item(Resource):
 
         return {"item":item},200 if item  else 404
 
-
+    @jwt_required()
     def post(self,name):
         if  next(filter(lambda x: x["name"] == name, items),None) is not None:
             return {"message":"An item with name  '{}' already exist.".format(name)},400 # bad request
@@ -35,10 +35,22 @@ class Item(Resource):
         items.append(item)
         return item, 201 # creating success # 201 ||  # 202 --> accepted but not excuted
 
+    @jwt_required()
     def delete(self,name):
         global items
         items = list(filter(lambda x: x["name"] != name, items))
         return {"message": "item deleted"}
+
+    @jwt_required()
+    def put(self,name):
+        data = request.get_json()
+        item = next(filter(lambda x: x['name'] == name , items),None)
+        if item is None:
+            item = {"name":name, "price":data["price"]}
+            items.append(item)
+        else:
+            item.update(item)
+        return item
 
 
 class ItemList(Resource):
