@@ -20,7 +20,7 @@ class Item(Resource):
                         type=float,
                         required=True,
                         help="This field cannot be left blank")
-    data = parser.parse_args()
+    #data = parser.parse_args()
     def get(self,name):
         item = next(filter(lambda x: x["name"] == name, items),None) # next will give us the first --> but we only have one
 
