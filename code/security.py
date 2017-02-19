@@ -1,5 +1,5 @@
 from werkzeug.security import safe_str_cmp
-from REST_API.code.user import User
+from user import User
 
 users = [
    User(1,"bob" , "asdf")

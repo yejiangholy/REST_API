@@ -11,7 +11,7 @@ class User:
 
     @classmethod
     def find_by_username(cls,username):
-        connection = sqlite3.connect("REST_API/data.db")
+        connection = sqlite3.connect("data.db")
         cursor = connection.cursor()
 
         query = "SELECT * FROM users WHERE username=?" # ? is a parameter we pass next line
@@ -60,7 +60,7 @@ class UserRegister(Resource):
         cursor = connection.cursor()
 
         query = "INSERT INTO users VALUES(NULL, ? , ?)"
-        cursor.excute(query,(data["username"],data["password"]))
+        cursor.execute(query,(data["username"],data["password"]))
 
         connection.commit()
         connection.close()
