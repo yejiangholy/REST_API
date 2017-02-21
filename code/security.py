@@ -14,6 +14,3 @@ def identity(payload):
     return UserModel.find_by_id(user_id)
 
 
-# {
-#   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0ODczNTYyMDMsImlkZW50aXR5IjoxLCJpYXQiOjE0ODczNTU5MDMsIm5iZiI6MTQ4NzM1NTkwM30.VHJ3zx5oIiIwuJXQ7H9hsQ6s6FS_8xOGSrQpTpNcauo"
- # }
