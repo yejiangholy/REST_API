@@ -43,7 +43,7 @@ class Item(Resource):
 
     @jwt_required()
     def delete(self,name):
-        item = Item.find_by_name(name)
+        item = ItemModel.find_by_name(name)
         if item:
             item.delete_from_db()
             return{"message" : "Item deleted"}
